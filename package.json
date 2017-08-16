@@ -1,0 +1,18 @@
+{
+  "name": "angular-material-badge",
+  "version": "1.0.0",
+  "description": "Material Badge for AngularJS",
+  "main": "angular-material-badge.js",
+  "repository": "https://github.com/jmouriz/angular-material-badge",
+  "author": "Juan Manuel <jmouriz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "angular-material": "^1.1.4"
+  },
+  "devDependencies": {
+    "minify": "^3.0.1"
+  }
+}

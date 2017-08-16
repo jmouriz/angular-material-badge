@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es" ng-app="Demo">
+   <head>
+      <meta charset="utf-8" />
+      <title>test</title>
+  	  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="https://unpkg.com/angular-material@^1.1.4/angular-material.min.css" />
+      <link rel="stylesheet" href=",./angular-material-badge.min.css" />
+   </head>
+   <body ng-controller="Demo" md-theme="{{theme}}" md-theme-watch ng-cloak>
+      <div layout="row">
+         <md-input-container>
+            <label>Value</label>
+            <input ng-model="value" />
+         </md-input-container>
+         <md-input-container>
+            <label>Theme</label>
+            <md-select ng-model="theme">
+               <md-option ng-repeat="theme in themes" ng-value="theme.name">{{theme.description}}</md-option>
+            </md-select>
+         </md-input-container>
+         <md-badge class="md-primary" ng-if="value" style="margin: 20px">{{value}}</md-badge>
+      </div>
+
+      <script src="https://unpkg.com/angular@^1.6.5/angular.min.js"></script>
+      <script src="https://unpkg.com/angular-aria@^1.6.5/angular-aria.min.js"></script>
+      <script src="https://unpkg.com/angular-animate@^1.6.5/angular-animate.min.js"></script>
+      <script src="https://unpkg.com/angular-material@^1.1.4/angular-material.min.js"></script>
+      <script src="../angular-material-badge.min.js"></script>
+      <script src="demo.js"></script>
+   </body>
+</html>
