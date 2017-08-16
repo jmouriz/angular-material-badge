@@ -2,4 +2,4 @@
 
 Material Badge for AngularJS
 
-[demo](https://jmouriz.github.io/angular-material-badge/demo/demo.html)
+Ver [Demo en línea](https://jmouriz.github.io/angular-material-badge/demo/demo.html)
