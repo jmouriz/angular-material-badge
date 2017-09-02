@@ -6,6 +6,7 @@
       <title>test</title>
   	  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       <link rel="stylesheet" href="https://unpkg.com/angular-material@^1.1.4/angular-material.min.css" />
+      <link rel="stylesheet" href="node_modules/angular-material-icons/angular-material-icons.css" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
       <link rel="stylesheet" href="angular-material-badge.min.css" />
    </head>
@@ -21,6 +22,7 @@
                <md-option ng-repeat="theme in themes" ng-value="theme.name">{{theme.description}}</md-option>
             </md-select>
          </md-input-container>
+         <ng-md-icon md-badge="{{value}}" icon="notifications"></ng-md-icon>
          <md-badge ng-if="value" md-colors="::{border: '{{theme}}-primary-700', background: '{{theme}}-primary-700'}" style="margin: 20px">{{value}}</md-badge>
       </div>
 
@@ -28,6 +30,7 @@
       <script src="https://unpkg.com/angular-aria@^1.6.5/angular-aria.min.js"></script>
       <script src="https://unpkg.com/angular-animate@^1.6.5/angular-animate.min.js"></script>
       <script src="https://unpkg.com/angular-material@^1.1.4/angular-material.min.js"></script>
+      <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script>
       <script src="angular-material-badge.min.js"></script>
       <script src="demo/demo.js"></script>
    </body>

@@ -1,7 +1,9 @@
 (function(window, angular, undefined) {
    'use strict';
    
-   angular.module('ngMdBadge', ['ngMaterial']).directive('mdBadge', ['$mdTheming', function($mdTheming) {
+   var module = angular.module('ngMdBadge', ['ngMaterial']);
+
+   module.directive('mdBadge', ['$mdTheming', function($mdTheming) {
       return {
          restrict: 'E',
          replace: true,
@@ -10,9 +12,18 @@
             $mdTheming(element);
          },
          template: function(element, attributes) {
-            console.log('template');
-            return '<div class="md-badge" ng-transclude></div>';
+            return '<div class="md-badge-alone" ng-transclude></div>';
          }
+      };
+   }]);
+   
+   module.directive('mdBadge', ['$mdTheming', function($mdTheming) {
+      return {
+         restrict: 'A',
+         link: function(scope, element, attributes) {
+            $mdTheming(element);
+            element.addClass('md-badge');
+         },
       };
    }]);
 })(window, window.angular, undefined);

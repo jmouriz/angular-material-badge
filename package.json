@@ -13,6 +13,7 @@
     "angular-material": "^1.1.4"
   },
   "devDependencies": {
+    "angular-material-icons": "^0.7.1",
     "minify": "^3.0.1"
   }
 }

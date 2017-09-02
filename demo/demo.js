@@ -42,7 +42,7 @@ var themes = [{
       description: 'Amber'
 }];
 
-var demo = angular.module('Demo', ['ngMaterial', 'ngMdBadge']);
+var demo = angular.module('Demo', ['ngMaterial', 'ngMdIcons', 'ngMdBadge']);
 
 demo.config(['$mdThemingProvider', function($mdThemingProvider) {
    $mdThemingProvider.theme('default').primaryPalette('purple').accentPalette('blue-grey').warnPalette('red');
