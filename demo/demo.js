@@ -1,3 +1,20 @@
+var demo = angular.module('Demo', ['ngMaterial', 'ngMdIcons', 'ngMdBadge', 'hc.marked']);
+
+demo.config(['markedProvider', function(markedProvider) {
+   markedProvider.setOptions({
+      gfm: true,
+      tables: true,
+      highlight: function(code, language) {
+         if (!language) {
+            language = 'bash';
+         } else if (language == 'html') {
+            language = 'markup';
+         }
+         return Prism.highlight(code, Prism.languages[language]);
+      }
+   });
+}]);
+
 var themes = [{
       name: 'red',
       description: 'Red'
@@ -41,8 +58,6 @@ var themes = [{
       name: 'amber',
       description: 'Amber'
 }];
-
-var demo = angular.module('Demo', ['ngMaterial', 'ngMdIcons', 'ngMdBadge']);
 
 demo.config(['$mdThemingProvider', function($mdThemingProvider) {
    $mdThemingProvider.theme('default').primaryPalette('purple').accentPalette('blue-grey').warnPalette('red');
