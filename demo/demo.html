@@ -25,7 +25,9 @@
                <md-option ng-repeat="theme in themes" ng-value="theme.name">{{theme.description}}</md-option>
             </md-select>
          </md-input-container>
-         <ng-md-icon md-badge="{{value}}" icon="notifications"></ng-md-icon>
+         <ng-md-icon md-badge="{{value}}" md-badge-fill="red" icon="notifications"></ng-md-icon>
+         <ng-md-icon md-badge="{{value}}" md-badge-fill="green" md-badge-color="black" icon="shopping_cart"></ng-md-icon>
+         <ng-md-icon md-badge="{{value}}" md-badge-fill="blue" icon="email"></ng-md-icon>
          <md-badge ng-if="value" md-colors="::{border: '{{theme}}-primary-700', background: '{{theme}}-primary-700'}" style="margin: 20px">{{value}}</md-badge>
       </div>
       <marked src="'README.md'"></marked>
