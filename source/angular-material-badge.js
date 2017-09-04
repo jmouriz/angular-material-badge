@@ -17,15 +17,21 @@
       };
    }]);
    
-   module.directive('mdBadge', ['$mdTheming', function($mdTheming) {
+   module.directive('mdBadge', ['$mdTheming', '$mdColors', function($mdTheming, $mdColors) {
       return {
          restrict: 'A',
          link: function(scope, element, attributes) {
             $mdTheming(element);
             element.addClass('md-badge');
-				function apply(color, level) {
+            window.$debug = $mdColors;
+            function apply(color, level) {
                if (color) {
-                  color = color.replace(' ', '');
+                  if (color.startsWith(':')) {
+                     /* todo => watch this */
+                     color = $mdColors.getThemeColor(color.substr(1));
+                  } else {
+                     color = color.replace(' ', '');
+                  }
                   window.rainbow = window.rainbow || {};
                   if (!window.rainbow[color]) {
                      var id = 'md-badge-' + Math.floor((Math.random() * 500) + 1);
@@ -38,9 +44,9 @@
                      style.innerText = ['.', id, ':after', '{', level, 'color:', color, '!important', '}'].join('');
                      document.head.insertBefore(style, document.head.firstChild);
                   }
-               	element.addClass(window.rainbow[color]);
+                  element.addClass(window.rainbow[color]);
                }
-				}
+            }
             apply(attributes.mdBadgeFill, 'background');
             apply(attributes.mdBadgeColor);
          },
