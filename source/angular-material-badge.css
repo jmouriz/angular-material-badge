@@ -9,8 +9,8 @@
 .md-badge[md-badge]:after {
    content: attr(md-badge);
    position: absolute;
-   bottom: -10px;
-   right: -10px;
+   bottom: -6px;
+   right: -8px;
    font-size: 12px;
    font-family: Roboto, "Helvetica Neue", sans-serif;
    background-color: rgb(0, 130, 130);
