@@ -26,16 +26,12 @@
 
 .md-badge-alone {
    background-color: rgb(0, 130, 130);
-   border-color: rgb(0, 130, 130);
-   color: rgb(255, 255, 255);
-   border-radius: 10px;
-   border-style: solid;
-   border-width: 1px;
    border-image-outset: 0px;
    border-image-repeat: stretch;
    border-image-slice: 100%;
    border-image-source: none;
-   border-image-width: 1;
+   color: rgb(255, 255, 255);
+   border-radius: 10px;
    box-sizing: border-box;
    cursor: pointer;
    display: inline-block;
@@ -54,7 +50,7 @@
    padding-bottom: 0px;
    padding-left: 2px;
    padding-right: 2px;
-   padding-top: 0px;
+   padding-top: 1px;
    text-align: center;
    text-indent: 0px;
    text-rendering: auto;

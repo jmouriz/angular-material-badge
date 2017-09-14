@@ -25,11 +25,19 @@
                <md-option ng-repeat="theme in themes" ng-value="theme.name">{{theme.description}}</md-option>
             </md-select>
          </md-input-container>
-         <ng-md-icon md-badge="{{value}}" md-badge-fill="red" icon="notifications"></ng-md-icon>
-         <ng-md-icon md-badge="{{value}}" md-badge-fill="green" md-badge-color="black" icon="shopping_cart"></ng-md-icon>
-         <ng-md-icon md-badge="{{value}}" md-badge-fill="blue" icon="email"></ng-md-icon>
-         <ng-md-icon md-badge="{{value}}" md-badge-fill=":{{theme}}-primary-700" icon="notifications"></ng-md-icon>
-         <md-badge ng-if="value" md-colors="::{border: '{{theme}}-primary-700', background: '{{theme}}-primary-700'}" style="margin: 20px">{{value}}</md-badge>
+         <div>
+            <md-button class="md-icon-button md-badge" aria-label="Badge demo">
+               <ng-md-icon icon="email" md-badge="{{value}}"></ng-md-icon>
+            </md-button>
+            <ng-md-icon md-badge="{{value}}" md-badge-fill="red" icon="notifications"></ng-md-icon>
+            &nbsp;
+            <ng-md-icon md-badge="{{value}}" md-badge-fill="green" md-badge-color="black" icon="shopping_cart"></ng-md-icon>
+            &nbsp;
+            <ng-md-icon md-badge="{{value}}" md-badge-fill="blue" icon="email"></ng-md-icon>
+            &nbsp;
+            <ng-md-icon md-badge="{{value}}" md-badge-fill=":{{theme}}-primary-700" icon="chat"></ng-md-icon>
+            <md-badge ng-if="value" md-colors="::{background: '{{theme}}-primary-700'}" style="margin: 20px">{{value}}</md-badge>
+         </div>
       </div>
       <marked src="'README.md'"></marked>
       <script src="https://unpkg.com/angular@^1.6.5/angular.min.js"></script>

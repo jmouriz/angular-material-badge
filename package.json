@@ -1,6 +1,6 @@
 {
   "name": "angular-material-badge",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Material Badge for AngularJS",
   "main": "angular-material-badge.js",
   "repository": "https://github.com/jmouriz/angular-material-badge",
