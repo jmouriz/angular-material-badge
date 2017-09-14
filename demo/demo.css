@@ -2,6 +2,6 @@ body {
    margin: 24px;
 }
 
-.md-button.md-icon-button.md-badge {
-   border-bottom-right-radius: 0;
+.test {
+   align-self: center;
 }

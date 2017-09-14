@@ -22,6 +22,10 @@
          restrict: 'A',
          link: function(scope, element, attributes) {
             $mdTheming(element);
+            var parent = element.parent();
+            if (parent && parent.prop('tagName') == 'BUTTON' && parent.hasClass('md-icon-button')) {
+               parent.addClass('md-badge');
+            }
             element.addClass('md-badge');
             window.$debug = $mdColors;
             function apply(color, level) {
