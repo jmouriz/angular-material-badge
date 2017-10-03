@@ -26,19 +26,26 @@
             </md-select>
          </md-input-container>
          <div class="test">
+            <md-button class="md-raised md-primary" aria-label="Badge demo" md-badge="{{value}}" md-badge-fill="blue">
+               Badge demo
+            </md-button>
+            <md-button class="md-fab md-primary" md-badge="{{value}}" md-badge-offset="5" aria-label="Badge demo">
+               <ng-md-icon icon="shopping_cart"></ng-md-icon>
+            </md-button>
             <md-button class="md-icon-button" aria-label="Badge demo">
-               <ng-md-icon icon="email" md-badge="{{value}}"></ng-md-icon>
+               <ng-md-icon icon="email" md-badge="{{value}}" md-badge-fill="yellow" md-badge-color="black"></ng-md-icon>
             </md-button>
             <ng-md-icon md-badge="{{value}}" md-badge-fill="red" icon="notifications"></ng-md-icon>
-            &nbsp;
-            <ng-md-icon md-badge="{{value}}" md-badge-fill="green" md-badge-color="black" icon="shopping_cart"></ng-md-icon>
-            &nbsp;
-            <ng-md-icon md-badge="{{value}}" md-badge-fill="blue" icon="email"></ng-md-icon>
             &nbsp;
             <ng-md-icon md-badge="{{value}}" md-badge-fill=":{{theme}}-primary-700" icon="chat"></ng-md-icon>
             <md-badge ng-if="value" md-colors="::{background: '{{theme}}-primary-700'}" style="margin: 20px">{{value}}</md-badge>
          </div>
       </div>
+      <md-card layout="row" md-badge="{{value}}" md-badge-fill=":{{theme}}-primary">
+         <md-card-content>
+            Badge Demo
+         </md-card-content>
+      </md-card>
       <marked src="'README.md'"></marked>
       <script src="https://unpkg.com/angular@^1.6.5/angular.min.js"></script>
       <script src="https://unpkg.com/angular-aria@^1.6.5/angular-aria.min.js"></script>

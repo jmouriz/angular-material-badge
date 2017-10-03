@@ -12,7 +12,7 @@
             $mdTheming(element);
          },
          template: function(element, attributes) {
-            return '<div class="md-badge-alone" ng-transclude></div>';
+            return '<div class="md-badge" ng-transclude></div>';
          }
       };
    }]);
@@ -22,37 +22,57 @@
          restrict: 'A',
          link: function(scope, element, attributes) {
             $mdTheming(element);
+            //
             var parent = element.parent();
-            if (parent && parent.prop('tagName') == 'BUTTON' && parent.hasClass('md-icon-button')) {
-               parent.addClass('md-badge');
-            }
-            element.addClass('md-badge');
-            window.$debug = $mdColors;
-            function apply(color, level) {
+            var badge = document.createElement('div');
+            var offset = attributes.mdBadgeOffset || 0;
+            function style(where, color) {
                if (color) {
                   if (color.startsWith(':')) {
-                     /* todo => watch this */
                      color = $mdColors.getThemeColor(color.substr(1));
-                  } else {
-                     color = color.replace(' ', '');
                   }
-                  window.rainbow = window.rainbow || {};
-                  if (!window.rainbow[color]) {
-                     var id = 'md-badge-' + Math.floor((Math.random() * 500) + 1);
-                     window.rainbow[color] = id;
-                     var style = document.createElement('style');
-                     style.type = 'text/css';
-                     if (level) {
-                        level += '-';
-                     }
-                     style.innerText = ['.', id, ':after', '{', level, 'color:', color, '!important', '}'].join('');
-                     document.head.insertBefore(style, document.head.firstChild);
-                  }
-                  element.addClass(window.rainbow[color]);
+                  badge.style[where] = color;
                }
             }
-            apply(attributes.mdBadgeFill, 'background');
-            apply(attributes.mdBadgeColor);
+            badge.classList.add('md-badge');
+            badge.style.position = 'absolute';
+            badge.style.zIndex = '9999';
+            document.body.appendChild(badge);
+            scope.$watch(function() {
+               return attributes.mdBadgeColor;
+            }, function(value){
+               style('color', value);
+            });
+            scope.$watch(function() {
+               return attributes.mdBadgeFill;
+            }, function(value){
+               style('background-color', value);
+            });
+            scope.$watch(function() {
+               return attributes.mdBadge;
+            }, function(value){
+               badge.textContent = value;
+               badge.style.display = value ? 'initial' : 'none';
+            });
+            scope.$watch(function() {
+               return {
+                  top: element.prop('offsetTop'),
+                  left: element.prop('offsetLeft'),
+                  width: element.prop('offsetWidth'),
+                  height: element.prop('offsetHeight')
+               };
+            }, function(value) {
+               var top = parent.prop('offsetTop');
+               var left = parent.prop('offsetLeft');
+               if (top > value.top) {
+                  value.top += top;
+               }
+               if (left > value.left) {
+                  value.left += left;
+               }
+               badge.style.left = value.left + value.width - 10 - offset + 'px';
+               badge.style.top = value.top + value.height - 10 - offset + 'px';
+            }, true);
          },
       };
    }]);
