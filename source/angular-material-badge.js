@@ -56,10 +56,10 @@
             });
             scope.$watch(function() {
                return {
-                  top: element.prop('offsetTop'),
-                  left: element.prop('offsetLeft'),
-                  width: element.prop('offsetWidth'),
-                  height: element.prop('offsetHeight')
+                  top: parent.prop('offsetTop'),
+                  left: parent.prop('offsetLeft'),
+                  width: parent.prop('offsetWidth'),
+                  height: parent.prop('offsetHeight')
                };
             }, function(value) {
                var top = parent.prop('offsetTop');
@@ -70,8 +70,8 @@
                if (left > value.left) {
                   value.left += left;
                }
-               badge.style.left = value.left + value.width - 10 - offset + 'px';
-               badge.style.top = value.top + value.height - 10 - offset + 'px';
+               badge.style.left = value.left + value.width - 20 - offset + 'px';
+               badge.style.top = value.top + value.height - 20 - offset + 'px';
             }, true);
          },
       };
