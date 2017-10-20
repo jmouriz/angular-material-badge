@@ -17,7 +17,7 @@
       };
    }]);
    
-   module.directive('mdBadge', ['$mdTheming', '$mdColors', function($mdTheming, $mdColors) {
+   module.directive('mdBadge', ['$mdTheming', '$mdColors', '$window', function($mdTheming, $mdColors, $window) {
       return {
          restrict: 'A',
          link: function(scope, element, attributes) {
@@ -56,10 +56,10 @@
             });
             scope.$watch(function() {
                return {
-                  top: parent.prop('offsetTop'),
-                  left: parent.prop('offsetLeft'),
-                  width: parent.prop('offsetWidth'),
-                  height: parent.prop('offsetHeight')
+                  top: element.prop('offsetTop'),
+                  left: element.prop('offsetLeft'),
+                  width: element.prop('offsetWidth'),
+                  height: element.prop('offsetHeight')
                };
             }, function(value) {
                var top = parent.prop('offsetTop');
@@ -73,6 +73,9 @@
                badge.style.left = value.left + value.width - 20 - offset + 'px';
                badge.style.top = value.top + value.height - 20 - offset + 'px';
             }, true);
+            angular.element($window).bind('resize', function(){
+               scope.$digest();
+            });
          },
       };
    }]);
