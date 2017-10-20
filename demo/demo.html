@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="https://unpkg.com/angular-material-icons@^0.7.1/angular-material-icons.css" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
       <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css" />
-      <link rel="stylesheet" href="angular-material-badge.min.css" />
+      <link rel="stylesheet" href="source/angular-material-badge.css" />
       <link rel="stylesheet" href="demo/demo.css" />
    </head>
    <body ng-controller="Demo" md-theme="{{theme}}" md-theme-watch ng-cloak>
@@ -32,8 +32,8 @@
             <md-button class="md-fab md-primary" md-badge="{{value}}" md-badge-offset="5" aria-label="Badge demo">
                <ng-md-icon icon="shopping_cart"></ng-md-icon>
             </md-button>
-            <md-button class="md-icon-button" aria-label="Badge demo">
-               <ng-md-icon icon="email" md-badge="{{value}}" md-badge-fill="yellow" md-badge-color="black"></ng-md-icon>
+            <md-button class="md-icon-button" md-badge="{{value}}" md-badge-fill="yellow" md-badge-color="black" md-badge-offset="3" aria-label="Badge demo">
+               <ng-md-icon icon="email"></ng-md-icon>
             </md-button>
             <ng-md-icon md-badge="{{value}}" md-badge-fill="red" icon="notifications"></ng-md-icon>
             &nbsp;
@@ -58,7 +58,7 @@
       <script src="https://unpkg.com/prismjs/components/prism-bash.min.js"></script>
       <script src="https://unpkg.com/marked/lib/marked.js"></script>
       <script src="https://unpkg.com/angular-marked/dist/angular-marked.min.js"></script>
-      <script src="angular-material-badge.min.js"></script>
+      <script src="source/angular-material-badge.js"></script>
       <script src="demo/demo.js"></script>
    </body>
 </html>

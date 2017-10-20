@@ -17,7 +17,7 @@
       };
    }]);
    
-   module.directive('mdBadge', ['$mdTheming', '$mdColors', '$window', function($mdTheming, $mdColors, $window) {
+   module.directive('mdBadge', ['$mdTheming', '$mdColors', '$timeout', '$window', function($mdTheming, $mdColors, $timeout, $window) {
       return {
          restrict: 'A',
          link: function(scope, element, attributes) {
@@ -25,7 +25,10 @@
             //
             var parent = element.parent();
             var badge = document.createElement('div');
-            var offset = attributes.mdBadgeOffset || 10;
+            var offset = parseInt(attributes.mdBadgeOffset);
+            if (isNaN(offset)) {
+               offset = 10;
+            }
             function style(where, color) {
                if (color) {
                   if (color.startsWith(':')) {
@@ -36,7 +39,7 @@
             }
             badge.classList.add('md-badge');
             badge.style.position = 'absolute';
-            document.body.appendChild(badge);
+            parent.append(badge);
             scope.$watch(function() {
                return attributes.mdBadgeColor;
             }, function(value){
@@ -53,6 +56,10 @@
                badge.textContent = value;
                badge.style.display = value ? 'initial' : 'none';
             });
+            var position = function(value) {
+               badge.style.left = value.left + value.width - 20 + offset + 'px';
+               badge.style.top = value.top + value.height - 20 + offset + 'px';
+            }
             scope.$watch(function() {
                return {
                   top: element.prop('offsetTop'),
@@ -61,19 +68,18 @@
                   height: element.prop('offsetHeight')
                };
             }, function(value) {
-               var top = parent.prop('offsetTop');
-               var left = parent.prop('offsetLeft');
-               if (top > value.top) {
-                  value.top += top;
-               }
-               if (left > value.left) {
-                  value.left += left;
-               }
-               badge.style.left = value.left + value.width - 20 + offset + 'px';
-               badge.style.top = value.top + value.height - 20 + offset + 'px';
+               position(value);
             }, true);
-            angular.element($window).bind('resize', function(){
+            $timeout(function() {
                scope.$digest();
+            });
+            angular.element($window).bind('resize', function(){
+               position({
+                  top: element.prop('offsetTop'),
+                  left: element.prop('offsetLeft'),
+                  width: element.prop('offsetWidth'),
+                  height: element.prop('offsetHeight')
+               });
             });
          },
       };
