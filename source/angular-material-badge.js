@@ -25,7 +25,7 @@
             //
             var parent = element.parent();
             var badge = document.createElement('div');
-            var offset = attributes.mdBadgeOffset || 0;
+            var offset = attributes.mdBadgeOffset || 10;
             function style(where, color) {
                if (color) {
                   if (color.startsWith(':')) {
@@ -36,7 +36,6 @@
             }
             badge.classList.add('md-badge');
             badge.style.position = 'absolute';
-            badge.style.zIndex = '9999';
             document.body.appendChild(badge);
             scope.$watch(function() {
                return attributes.mdBadgeColor;
@@ -70,8 +69,8 @@
                if (left > value.left) {
                   value.left += left;
                }
-               badge.style.left = value.left + value.width - 20 - offset + 'px';
-               badge.style.top = value.top + value.height - 20 - offset + 'px';
+               badge.style.left = value.left + value.width - 20 + offset + 'px';
+               badge.style.top = value.top + value.height - 20 + offset + 'px';
             }, true);
             angular.element($window).bind('resize', function(){
                scope.$digest();
