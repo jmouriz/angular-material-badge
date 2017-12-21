@@ -25,8 +25,13 @@
                <md-option ng-repeat="theme in themes" ng-value="theme.name">{{theme.description}}</md-option>
             </md-select>
          </md-input-container>
+         <md-input-container>
+            <md-checkbox ng-model="show">Show</md-checkbox>
+         </md-input-container>
+      </div>
+      <div layout="row">
          <div class="test">
-            <md-button class="md-raised md-primary" aria-label="Badge demo" md-badge="{{value}}" md-badge-fill="blue">
+            <md-button class="md-raised md-primary" aria-label="Badge demo" md-badge="{{value}}" md-badge-fill="blue" ng-if="show">
                Badge demo
             </md-button>
             <md-button class="md-fab md-primary" md-badge="{{value}}" md-badge-offset="5" aria-label="Badge demo">
@@ -41,7 +46,7 @@
             <md-badge ng-if="value" md-colors="::{background: '{{theme}}-primary-700'}" style="margin: 20px">{{value}}</md-badge>
          </div>
       </div>
-      <md-card layout="row" md-badge="{{value}}" md-badge-fill=":{{theme}}-primary">
+      <md-card layout="row" md-badge="{{value}}" md-badge-fill=":{{theme}}-primary" ng-if="show">
          <md-card-content>
             Badge Demo
          </md-card-content>

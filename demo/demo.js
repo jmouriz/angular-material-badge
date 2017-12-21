@@ -81,4 +81,5 @@ demo.config(['$mdThemingProvider', function($mdThemingProvider) {
 demo.controller('Demo', ['$scope', function($scope) {
    $scope.theme = 'red';
    $scope.themes = themes;
+   $scope.show = true;
 }]);
